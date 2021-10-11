@@ -1,0 +1,103 @@
+--Terminale:
+char: 
+	TODO, but basicly ASCII
+identifier-char:
+	a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | _ 
+digit:
+	0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+
+-- Literale:
+int: 
+	[-]<digit>+
+
+float:
+	<int>.<digit>+
+
+bool:
+	true | false
+
+string:
+	"<char>+"
+
+literal: 
+	<int> | <float> | <bool> | <string>
+
+
+--Types:
+
+atom-type:
+	int | float | bool | string
+
+array-type: 
+	<atomType>[]
+
+type:
+	<atom-type> | <array-type>
+
+--Expressions:
+
+string-expression:
+	--Hint: variable-name must be of type string!
+	<string>|<variable-name>(\+(<string>|<variable-name>))*
+bool-expression:
+	--Hint: variable-name must be of type bool!
+	--No brackets here, the order is: !, ==, <, >
+	[!](<bool>|<variable-name>)((==|<|>)([!]<bool>|<variable-name>))*
+
+int-expression:
+	--Hint: variable-name must be of type int!
+	--No brackets here, the order is: *, /, +, -
+	<int>|<variable-name>((*|/|+|-)<int>|<variable-name>)*
+	
+float-expression:
+	--Hint: variable-name must be of type float!
+	--No brackets here, the order is: *, /, +, -
+	<float>|<variable-name>((*|/|+|-)<float>|<variable-name>)*
+	
+	
+-- Declarations:
+
+variable-name:
+	<identifier-char>+
+
+
+--We do not allow varibale reassignement...
+
+variable-declaration-string:
+	--Hint: variable-name must be of type string!
+	<variable-name>:string=<string-expression>
+
+variable-declaration-bool:
+	--Hint: variable-name must be of type bool!
+	<variable-name>:bool=<bool-expression>
+	
+variable-declaration-int:
+	--Hint: variable-name must be of type bool!
+	<variable-name>:int=<int-expression>
+	
+variable-declaration-float:
+	--Hint: variable-name must be of type bool!
+	<variable-name>:float=<float-expression>
+
+
+
+
+-- Functions:
+
+function-declaration:
+
+	
+
+
+function entry(args:string[]){
+	abc(10, 12.10, c);
+}
+
+function abc(a:int, b:float, c:bool, d:string, e:string[]) {
+	f:int = 10;
+	
+	
+	
+	
+}
