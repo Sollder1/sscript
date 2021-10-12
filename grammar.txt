@@ -66,19 +66,25 @@ variable-name:
 
 variable-declaration-string:
 	--Hint: variable-name must be of type string!
-	<variable-name>:string=<string-expression>
+	declare <variable-name>:string=<string-expression>
 
 variable-declaration-bool:
 	--Hint: variable-name must be of type bool!
-	<variable-name>:bool=<bool-expression>
+	declare <variable-name>:bool=<bool-expression>
 	
 variable-declaration-int:
 	--Hint: variable-name must be of type bool!
-	<variable-name>:int=<int-expression>
+	declare <variable-name>:int=<int-expression>
 	
 variable-declaration-float:
 	--Hint: variable-name must be of type bool!
-	<variable-name>:float=<float-expression>
+	declare <variable-name>:float=<float-expression>
+
+
+--Loop:
+
+while-loop:
+    while
 
 
 
