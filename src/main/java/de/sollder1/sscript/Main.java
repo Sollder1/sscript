@@ -1,8 +1,7 @@
 package de.sollder1.sscript;
 
+import de.sollder1.sscript.cli.CLI;
 import de.sollder1.sscript.lexer.Lexer;
-
-import java.util.Collections;
 
 public class Main {
 
@@ -10,23 +9,26 @@ public class Main {
 
         try {
 
-            Logger.debug("Starting Lexer...");
-            Lexer lexer = new Lexer(Collections.singletonList("function ina"));
+            Logger.info("Loading Config...");
+            var config = CLI.loadConfig(args);
+            Logger.debugf("Config loaded: %s! \n", config);
+
+            Logger.separator();
+
+            Logger.info("Starting Lexer...");
+            Lexer lexer = new Lexer(config.getFileContent());
             lexer.tokenize();
+            Logger.debug("Lexer is done, result:");
             lexer.printInternalState();
-            Logger.debug("Lexer is done!");
 
-
+            Logger.separator();
 
 
         } catch (CompilerException e) {
             Logger.logCompilerException(e);
         } catch (Throwable throwable) {
-            System.out.println("Compilation failed unknown exception!");
+            System.out.println("Compilation failed, unexpected exception has been thrown...");
             throwable.printStackTrace();
         }
-
     }
-
-
 }

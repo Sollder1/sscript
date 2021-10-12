@@ -76,7 +76,7 @@ public class Lexer {
 
 
     public void printInternalState() {
-        System.out.println(tokens);
+        Logger.debug(tokens.toString());
     }
 
 
