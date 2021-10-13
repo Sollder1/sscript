@@ -1,4 +1,4 @@
-package de.sollder1.sscript.lexer;
+package de.sollder1.sscript.lexer.tuple;
 
 import de.sollder1.sscript.lexer.tokens.TokenType;
 
@@ -16,7 +16,7 @@ public class LexerKeywordScanTuple {
 
     public LexerKeywordScanTuple(TokenType type, Integer newPosIndex) {
         this.type = type;
-        this.newPosIndex = newPosIndex;
+        this.newPosIndex = newPosIndex - 1;
         found = true;
     }
 

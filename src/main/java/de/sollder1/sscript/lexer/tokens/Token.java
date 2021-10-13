@@ -27,10 +27,6 @@ public class Token {
 
     @Override
     public String toString() {
-        return "Token{" +
-                "type=" + type +
-                ", value='" + value + '\'' +
-                ", lineNumber=" + lineNumber +
-                '}';
+        return type.toString() + (value != null ?  "->" + value : "");
     }
 }
