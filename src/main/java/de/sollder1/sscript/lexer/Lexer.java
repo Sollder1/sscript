@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class Lexer {
 
     private final List<String> sourceLines;
-    private List<Token> tokens = new LinkedList<>();
+    private final List<Token> tokens = new LinkedList<>();
 
     public Lexer(List<String> sourceLines) {
         this.sourceLines = sourceLines;
@@ -57,7 +57,6 @@ public class Lexer {
                     continue;
                 }
 
-
                 var intResult = scanForIntLiteral(lineIndex, posIndex);
                 if (intResult.isFound()) {
                     Logger.debugf("Token %s at line %d from %d to %d \n", intResult.getToken().getType().toString(),
@@ -76,18 +75,9 @@ public class Lexer {
                     continue;
                 }
 
-
                 throw new UnknownTokenException(lineIndex, posIndex, sourceLines.get(lineIndex).substring(0, posIndex + 1));
-
-                //Todo...
-
-
             }
-
-
         }
-
-
     }
 
     private boolean isWhiteSpace(int lineIndex, int posIndex) {
@@ -185,13 +175,16 @@ public class Lexer {
 
     public void printInternalState() {
 
-        var byLine = this.tokens.stream().collect(Collectors.groupingBy(Token::getLineNumber));
 
-        byLine.forEach((line, tokensAtLine) -> {
+
+        getTokensByLine().forEach((line, tokensAtLine) -> {
             System.out.print(line + ": ");
             System.out.println(tokensAtLine);
         });
     }
 
+    public Map<Integer, List<Token>> getTokensByLine() {
+        return this.tokens.stream().collect(Collectors.groupingBy(Token::getLineNumber));
+    }
 
 }

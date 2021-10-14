@@ -2,6 +2,7 @@ package de.sollder1.sscript;
 
 import de.sollder1.sscript.cli.CLI;
 import de.sollder1.sscript.lexer.Lexer;
+import de.sollder1.sscript.parser.Parser;
 
 public class Main {
 
@@ -23,6 +24,13 @@ public class Main {
 
             Logger.separator();
 
+            Logger.info("Starting Parser...");
+            Parser parser = new Parser(lexer);
+            parser.parse();
+            Logger.info("Parser is done, resulting statements:");
+            parser.printInternalState();
+
+            Logger.separator();
 
         } catch (CompilerException e) {
             Logger.logCompilerException(e);
